@@ -9,7 +9,7 @@ metadata:
   namespace: argocd
 spec:
   destination:
-    namespace: prometheus-operator
+    namespace: etda-workflow-develop
     server: 'https://kubernetes.default.svc'
   source:
     repoURL: git@github.com:psu-stewardship/etda-workflow-config.git
