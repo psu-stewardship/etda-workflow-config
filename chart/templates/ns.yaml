@@ -4,4 +4,4 @@ kind: Namespace
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
-  name: {{ .Release.namespace }}
+  name: {{ .Release.Namespace }}
