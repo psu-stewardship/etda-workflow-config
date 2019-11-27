@@ -8,7 +8,7 @@ partner: graduate
 fqdn: etda-go
 
 image:
-  repository: whereismyjetpack/etda-workflow
+  repository: harbor.dsrd.libraries.psu.edu/library/etda-workflow
   tag: 45
   pullPolicy: IfNotPresent
   imagePullSecrets: dsrd-dockerhub
