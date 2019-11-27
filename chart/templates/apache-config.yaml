@@ -15,7 +15,7 @@ data:
     CosignValidReference              ^https?:\/\/.*\.psu\.edu(\/.*)?
     CosignValidationErrorRedirect      https://webaccess.psu.edu/validation_error.html
     CosignFilterHashLength 2
-    CosignService {{ .Values.webaccess.cosignService | default (index .Values.ingress.hosts 0).host }}
+    CosignService {{ .Values.fqdn. }}
     CosignCrypto /etc/ssl/private/key.key /etc/ssl/certs/cert.crt /etc/apache2/cosign-ca/InCommonSHA2Chain.pem
 
     LogFormat "{ \

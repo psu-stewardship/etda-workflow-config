@@ -29,12 +29,10 @@ spec:
 {{- end }}
 {{- end }}
   rules:
-  {{- range .Values.ingress.hosts }}
-    - host: {{ .host | quote }}
+    - host: "{{ .Values.fqdn }}"
       http:
         paths:
-        {{- range .paths }}
-          - path: {{ . }}
+          - path: /
             backend:
               serviceName: {{ $fullName }}
               {{- if $webAccessEnabled }}
@@ -42,6 +40,4 @@ spec:
               {{ else }}
               servicePort: http
               {{ end }}
-        {{- end }}
-  {{- end }}
 {{- end }}

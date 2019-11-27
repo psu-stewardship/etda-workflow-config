@@ -1,4 +1,3 @@
-{{- range .Values.ingress.tls }}
 ---
 apiVersion: cert-manager.io/v1alpha2
 kind: Certificate
@@ -6,11 +5,8 @@ metadata:
   name: {{ .secretName }}
 spec:
   dnsNames:
-  {{- range .hosts }}
-  - {{ . }}
-  {{- end }}
+  - {{ .Values.fqdn }}
   issuerRef:
     kind: ClusterIssuer
     name: letsencrypt-prod-route53
-  secretName: {{ .secretName }}
-{{- end }}
+  secretName: {{ .Values.fqdn }}
