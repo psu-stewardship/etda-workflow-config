@@ -28,7 +28,7 @@ if [ ! -f argocd/$branch_slugified.yaml ]; then
 fi
 
 # process the template
-yq w argocd/$branch_slugified.yaml spec.metadata.name etda-workflow-$branch_slugified -i
+yq w argocd/$branch_slugified.yaml metadata.name etda-workflow-$branch_slugified -i
 yq w argocd/$branch_slugified.yaml spec.destination.namespace etda-workflow-$branch_slugified -i
 yq w argocd/$branch_slugified.yaml spec.source.helm.values.image.tag $DRONE_BUILD_NUMBER -i 
 yq w argocd/$branch_slugified.yaml global.vault.path -i
