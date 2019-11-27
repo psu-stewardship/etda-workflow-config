@@ -89,7 +89,7 @@ spec:
             address: https://vault.dsrd.libraries.psu.edu:8200
             mountPath: auth/k8s-dsrd-dev
             path: secret/app/etda_workflow/dev
-            role: etda_workflow_dev
+            role: etda-workflow-dev
 
   project: default
   syncPolicy:
