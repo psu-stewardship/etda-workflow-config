@@ -14,19 +14,22 @@ spec:
     targetRevision: HEAD
     path: chart
     helm:
-      values:
+     values: |
         image:
-          tag: 1152
+          tag: 1156
         global:
           vault:
             path: secret/app/etda_workflow/dev
         ingress:
           hosts:
           - submit-etda-fix-docker.dsrd.libraries.psu.edu
+          - submit-etda-fix-docker.dsrd.libraries.psu.edu
           tls:
           - hosts:
             - submit-etda-fix-docker.dsrd.libraries.psu.edu
             secretName: submit-etda-fix-docker.dsrd.libraries.psu.edu
+          - hosts:
+            - submit-etda-fix-docker.dsrd.libraries.psu.edu
   project: default
   syncPolicy:
     automated:
@@ -35,7 +38,7 @@ spec:
 sepc:
   source:
     helm:
-      values:
+     values: |
         global:
           vault:
             role: etda-workflow-dev
