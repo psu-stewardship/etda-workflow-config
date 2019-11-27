@@ -1,9 +1,9 @@
 dependencies:
 - name: redis
   repository: https://harbor.dsrd.libraries.psu.edu/chartrepo/public
-  version: 0.2.1
+  version: 0.2.2
 - name: mariadb
   repository: https://harbor.dsrd.libraries.psu.edu/chartrepo/public
-  version: 0.0.12
-digest: sha256:7cbf4ed226a4b2aa07ba30ca1fb5b03e6fdc836fd9a5e332a44548cbe3166965
-generated: "2019-11-26T15:24:22.558514-05:00"
+  version: 0.0.13
+digest: sha256:c4925b683f477f34c47a842ab50d478880002fbbd1f22082df32914268018a08
+generated: "2019-11-26T19:42:13.751628-05:00"
