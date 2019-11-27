@@ -15,6 +15,9 @@ spec:
     path: chart
     helm:
       values:
+        global:
+          vault:
+            enabled: true
   project: default-values:go
   syncPolicy:
     automated:
