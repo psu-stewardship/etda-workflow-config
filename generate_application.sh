@@ -13,10 +13,12 @@ vault_path="secret/app/etda_workflow/${config_env}"
 vault_path_escaped=$(echo $vault_path | sed  's/[\/&]/\\&/g' )
 
 if [ $config_env == "prod" ]; then 
+    vault_mount_path="auth/k8s-dsrd-dev"
     echo "we aren't in prod yet. bailing early"
     exit 0
     fqdn=scholarsphere.$domain_name
 else
+    vault_mount_path="auth/k8s-dsrd-prod"
     fqdn=submit-etda-$branch_slugified.$domain_name
 fi
 
@@ -34,6 +36,7 @@ yq w argocd/$branch_slugified.yaml spec.source.helm.values.image.tag $DRONE_BUIL
 yq w argocd/$branch_slugified.yaml spec.source.helm.values.global.vault.path $vault_path -i
 yq w argocd/$branch_slugified.yaml spec.source.helm.values.global.vault.role etda-workflow-$config_env -i 
 yq w argocd/$branch_slugified.yaml spec.source.helm.values.fqdn $fqdn -i 
+yq w argocd/$branch_slugified.yaml spec.source.helm.values.global.vault.mountPath $vault_mount_path -i
 
 # Turn the values block into a string 
 sed -i -e 's/[[:space:]]values:/values: |/g' argocd/$branch_slugified.yaml
