@@ -1,6 +1,7 @@
 domain_name="dsrd.libraries.psu.edu"
 config_env=${CONFIG_ENV-dev}
 set -e
+set -x
 
 ## Configure git
 git config user.email "drone@drone-test.dsrd.libraries.psu.edu"
