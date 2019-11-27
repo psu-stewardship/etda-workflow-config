@@ -23,13 +23,10 @@ spec:
         ingress:
           hosts:
           - submit-etda-fix-docker.dsrd.libraries.psu.edu
-          - submit-etda-fix-docker.dsrd.libraries.psu.edu
           tls:
           - hosts:
             - submit-etda-fix-docker.dsrd.libraries.psu.edu
             secretName: submit-etda-fix-docker.dsrd.libraries.psu.edu
-          - hosts:
-            - submit-etda-fix-docker.dsrd.libraries.psu.edu
   project: default
   syncPolicy:
     automated:
