@@ -26,10 +26,3 @@ spec:
     automated:
       prune: false
       selfHeal: false
-sepc:
-  source:
-    helm:
-     values: |
-        global:
-          vault:
-            role: etda-workflow-dev
