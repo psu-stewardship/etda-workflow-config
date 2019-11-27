@@ -32,7 +32,7 @@ yq w argocd/$branch_slugified.yaml metadata.name etda-workflow-$branch_slugified
 yq w argocd/$branch_slugified.yaml spec.destination.namespace etda-workflow-$branch_slugified -i
 yq w argocd/$branch_slugified.yaml spec.source.helm.values.image.tag $DRONE_BUILD_NUMBER -i 
 yq w argocd/$branch_slugified.yaml spec.source.helm.values.global.vault.path $vault_path -i
-yq w argocd/$branch_slugified.yaml sepc.source.helm.values.global.vault.role etda-workflow-$config_env -i 
+yq w argocd/$branch_slugified.yaml spec.source.helm.values.global.vault.role etda-workflow-$config_env -i 
 yq w argocd/$branch_slugified.yaml spec.source.helm.values.fqdn $fqdn -i 
 
 # Turn the values block into a string 
