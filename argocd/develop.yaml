@@ -28,7 +28,7 @@ spec:
               storage: 8Gi
         image:
           repository: harbor.dsrd.libraries.psu.edu/library/etda-workflow
-          tag: 794
+          tag: 1130
           pullPolicy: IfNotPresent
           imagePullSecrets: harbor-dsrd-libraries
         nameOverride: ''
