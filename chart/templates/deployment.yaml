@@ -44,9 +44,7 @@ spec:
             name: {{ $fullName }}-webaccess
         - name: tls
           secret:
-            {{- range .Values.ingress.tls }}
-            secretName: {{ .secretName }}
-            {{- end }}
+            secretName: {{ .Values.fqdn }}
         {{- end }}
         - name: etda-workflow-data
           {{- if .Values.persistence.enabled }}
