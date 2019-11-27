@@ -38,7 +38,7 @@ yq w argocd/$branch_slugified.yaml spec.source.helm.values.ingress.tls[+].hosts[
 yq w argocd/$branch_slugified.yaml spec.source.helm.values.ingress.tls.0.secretName $fqdn -i 
 
 # Turn the values block into a string 
-sed -e -i 's/[[:space:]]values:/values: |/g' argocd/$branch_slugified.yaml
+sed -i -e 's/[[:space:]]values:/values: |/g' argocd/$branch_slugified.yaml
 
 ## add the file to git
 git add argocd/$branch_slugified.yaml
