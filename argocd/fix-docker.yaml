@@ -16,7 +16,11 @@ spec:
     helm:
      values: |
         image:
-          tag: 1156
+          tag: 1157
+        global:
+          vault:
+            path: secret/app/etda_workflow/dev
+        fqdn: submit-etda-fix-docker.dsrd.libraries.psu.edu
   project: default
   syncPolicy:
     automated:
