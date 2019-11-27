@@ -22,7 +22,9 @@ spec:
             path: secret/app/etda_workflow/dev
         ingress:
           hosts:
-            "0": submit-etda-fix-docker.dsrd.libraries.psu.edu
+          - asfd
+          - asfd
+          - asfd
           tls:
             "0":
               hosts:
