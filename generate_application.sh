@@ -34,7 +34,7 @@ yq w argocd/$branch_slugified.yaml spec.source.helm.values.image.tag $DRONE_BUIL
 yq w argocd/$branch_slugified.yaml spec.source.helm.values.global.vault.path $vault_path -i
 yq w argocd/$branch_slugified.yaml sepc.source.helm.values.global.vault.role etda-workflow-$config_env -i 
 yq w argocd/$branch_slugified.yaml spec.source.helm.values.ingress.hosts[+] $fqdn -i 
-yq w argocd/$branch_slugified.yaml spec.source.helm.values.ingress.tls[+]hosts[+] $fqdn -i 
+yq w argocd/$branch_slugified.yaml spec.source.helm.values.ingress.tls[+].hosts[+] $fqdn -i 
 yq w argocd/$branch_slugified.yaml spec.source.helm.values.ingress.tls.0.secretName $fqdn -i 
 
 ## add the file to git
