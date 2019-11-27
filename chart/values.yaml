@@ -70,8 +70,8 @@ persistence:
       storage: 8Gi
 
 webaccess:
-  enabled: false
-  image: harbor.dsrd.libraries.psu.edu/public/apache-docker-webaccess:v3.0.2
+  enabled: true
+  image: harbor.dsrd.libraries.psu.edu/public/apache-docker-webaccess:v3.0.3
 
 certmanager:
   enabled: false
