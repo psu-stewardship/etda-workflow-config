@@ -16,10 +16,9 @@ spec:
     helm:
      values: |
         image:
-          tag: 1172
+          tag: 1174
         global:
           vault:
-            enabled: true
             path: secret/app/etda_workflow/dev
             role: etda-workflow-dev
             mountPath: auth/k8s-dsrd-dev
