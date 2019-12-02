@@ -46,3 +46,25 @@ git add argocd/$branch_slugified.yaml
 git commit -m "Adds deployment for $branch_slugified"
 git push -u origin master
 
+
+set -e
+# SYNC the application after push
+if [ -z $ARGOCD_SERVER ] || [ -z $ARGOCD_AUTH_TOKEN ]; then
+    echo "skipping argosync. missing required environemnt variables"
+else
+    echo "syncing app of apps"
+    argocd --insecure app sync etda-workflow-apps || true
+    retries=6
+    ## The first sync usually fails due certificate objects coming up in a degrated state.
+    echo "syncing app"
+    until sync; do
+        retries=$((retries-1))
+        sleep 30
+          if [ $retries -lt 1 ]; then
+            exit 1
+          fi
+    done
+    echo "waiting for app"
+    argocd --insecure app wait etda-workflow-$branch_slugified || true
+fi
+
