@@ -16,10 +16,11 @@ spec:
     helm:
      values: |
         image:
-          tag: 1182
+          tag: 1183
         global:
           vault:
             path: secret/app/etda_workflow/dev
+            enabled: true
             role: etda-workflow-dev
             mountPath: auth/k8s-dsrd-dev
         fqdn: submit-etda-fix-docker.dsrd.libraries.psu.edu
