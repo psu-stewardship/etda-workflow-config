@@ -13,12 +13,12 @@ vault_path="secret/app/etda_workflow/${config_env}"
 vault_path_escaped=$(echo $vault_path | sed  's/[\/&]/\\&/g' )
 
 if [ $config_env == "prod" ]; then 
-    vault_mount_path="auth/k8s-dsrd-dev"
+    vault_mount_path="auth/k8s-dsrd-prod"
     echo "we aren't in prod yet. bailing early"
     exit 0
     fqdn=scholarsphere.$domain_name
 else
-    vault_mount_path="auth/k8s-dsrd-prod"
+    vault_mount_path="auth/k8s-dsrd-dev"
     fqdn=submit-etda-$branch_slugified.$domain_name
 fi
 
