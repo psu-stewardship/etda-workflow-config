@@ -16,7 +16,7 @@ spec:
     helm:
      values: |
         image:
-          tag: 1174
+          tag: 1180
         global:
           vault:
             path: secret/app/etda_workflow/dev
