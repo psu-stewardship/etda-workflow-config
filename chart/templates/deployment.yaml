@@ -156,18 +156,18 @@ spec:
           {{- if .Values.mariadb.enabled }}
           - name: MYSQL_HOST
             value: {{ $fullName }}-mariadb
-          {{- if .Values.mariadb.db.user }}
-          - name: MYSQL_USER
-            value: {{ .Values.mariadb.db.user }}
-          {{- end}}
-          {{- if .Values.mariadb.db.name }}
-          - name: MYSQL_DATABASE
-            value: {{ .Values.mariadb.db.name }}
-          {{- end}}
-          {{- if .Values.mariadb.db.password }}
-          - name: MYSQL_PASSWORD
-            value: {{ .Values.mariadb.db.password }}
-          {{- end }}
+          # {{- if .Values.mariadb.db.user }}
+          # - name: MYSQL_USER
+          #   value: {{ .Values.mariadb.db.user }}
+          # {{- end}}
+          # {{- if .Values.mariadb.db.name }}
+          # - name: MYSQL_DATABASE
+          #   value: {{ .Values.mariadb.db.name }}
+          # {{- end}}
+          # {{- if .Values.mariadb.db.password }}
+          # - name: MYSQL_PASSWORD
+          #   value: {{ .Values.mariadb.db.password }}
+          # {{- end }}
           {{- end }}
           {{- if .Values.redis.enabled }}
           {{- if .Values.redis.password }}
