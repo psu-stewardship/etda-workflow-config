@@ -69,3 +69,10 @@ else
     argocd --insecure app wait etda-workflow-$branch_slugified || true
 fi
 
+# Fire off slack message if we are successful
+# TODO if slack_webhook_url is set, but we didn't do an argocd sync what's the meaning of life?
+if [ -z $SLACK_WEBHOOK_URL ]; then
+    echo "skipping slack message. missing SLACK_WEBHOOK_URL environment variable"
+else
+    slack -a -t "Sync Complete" -e :rocket: -u 'Drone CI' "Drone Build <https://drone-test.dsrd.libraries.psu.edu/$DRONE_REPO/$DRONE_BUILD_NUMBER|$DRONE_BUILD_NUMBER> is complete. You can view this deployment at https://$fqdn"
+fi
