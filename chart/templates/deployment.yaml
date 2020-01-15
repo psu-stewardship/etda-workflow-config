@@ -83,27 +83,27 @@ spec:
             "agent",
             "-config=/etc/vault/vault-agent-config.hcl",
           ]
-        - name: consul-template
-          image: hashicorp/consul-template:0.20.1-alpine
-          imagePullPolicy: Always
-          env:
-          - name: VAULT_PATH
-            value: {{ .Values.global.vault.path }}
-          - name: VAULT_ADDR
-            value: {{ .Values.global.vault.address }}
-          volumeMounts:
-          - name: shared-data
-            mountPath: /secrets
-          - name: vault-token
-            mountPath: /home/vault
-          - name: vault-config
-            mountPath: /etc/consul-template
-          args: [
-            "-vault-agent-token-file=/home/vault/.vault-token",
-            "-vault-addr={{ .Values.global.vault.address }}",
-            "-template=/etc/consul-template/env.env:/secrets/env.env",
-            "-once"
-          ]
+        # - name: consul-template
+        #   image: hashicorp/consul-template:0.20.1-alpine
+        #   imagePullPolicy: Always
+        #   env:
+        #   - name: VAULT_PATH
+        #     value: {{ .Values.global.vault.path }}
+        #   - name: VAULT_ADDR
+        #     value: {{ .Values.global.vault.address }}
+        #   volumeMounts:
+        #   - name: shared-data
+        #     mountPath: /secrets
+        #   - name: vault-token
+        #     mountPath: /home/vault
+        #   - name: vault-config
+        #     mountPath: /etc/consul-template
+        #   args: [
+        #     "-vault-agent-token-file=/home/vault/.vault-token",
+        #     "-vault-addr={{ .Values.global.vault.address }}",
+        #     "-template=/etc/consul-template/env.env:/secrets/env.env",
+        #     "-once"
+        #   ]
       {{- end }}
       containers:
       {{- if .Values.webaccess.enabled }}
@@ -185,7 +185,7 @@ spec:
             - name: shared-data
               mountPath: /secrets
             - name: vault-token
-              mountPath: /etc/token
+              mountPath: /vault
             - name: etda-workflow-data
               mountPath: /etda_workflow/workflow_data_files
             - name: etda-explore-data
