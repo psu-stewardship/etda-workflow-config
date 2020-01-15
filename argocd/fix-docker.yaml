@@ -15,6 +15,7 @@ spec:
     path: chart
     helm:
      values: |
+        ---
         image:
           tag: 1187
         global:
