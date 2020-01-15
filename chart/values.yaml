@@ -105,7 +105,7 @@ mysql:
   persistence:
     enabled: true
     storageClass: nfs-client
-    size: 1Gib
+    size: 1Gi
 # mariadb:
 #   db:
 #     user: etda
