@@ -139,6 +139,7 @@ spec:
             limits:
               cpu: 100m
               memory: 2048Mi
+              
             requests:
               cpu: 100m
               memory: 1024Mi
@@ -154,20 +155,23 @@ spec:
           - name: RAILS_LOG_TO_STDOUT
             value: "true"
           {{- if .Values.mariadb.enabled }}
-          - name: MYSQL_HOST
-            value: {{ $fullName }}-mariadb
-          {{- if .Values.mariadb.db.user }}
-          - name: MYSQL_USER
-            value: {{ .Values.mariadb.db.user }}
-          {{- end}}
-          {{- if .Values.mariadb.db.name }}
+          - name: MYSQL_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: "{{ $fullName }}-mysql"
+                key: PASSWORD
+          - name: MYSQL_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: "{{ $fullName }}-mysql"
+                key: USER
           - name: MYSQL_DATABASE
-            value: {{ .Values.mariadb.db.name }}
-          {{- end}}
-          # {{- if .Values.mariadb.db.password }}
-          # - name: MYSQL_PASSWORD
-          #   value: {{ .Values.mariadb.db.password }}
-          # {{- end }}
+            valueFrom:
+              secretKeyRef:
+                name: "{{ $fullName }}-mysql"
+                key: DATABASE
+          - name: MYSQL_HOST
+            value: {{ $fullName }}-mysql-master
           {{- end }}
           {{- if .Values.redis.enabled }}
           {{- if .Values.redis.password }}

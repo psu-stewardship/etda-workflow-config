@@ -1,6 +1,6 @@
 {{- if .Values.ingress.enabled -}}
 {{- $fullName := include "chart.fullname" . -}}
-{{- $webAccessEnabled := .Values.webaccess.enabled}}
+{{- $webAccessEnabled := .Values.webaccess.enabled }}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:

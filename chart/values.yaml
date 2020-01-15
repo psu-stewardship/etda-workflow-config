@@ -97,16 +97,25 @@ redis:
   cluster:
     enabled: false
 
-mariadb:
-  db:
-    user: etda
-    name: etda_workfow
+mysql:
   enabled: true
-  image:
-    tag: 10.3.14
+  username: etda
+  database: etda
+  replicas: 1
   persistence:
-    storageClass: nfs-client
     enabled: true
+    storageClass: nfs-client
+    size: 1Gib
+# mariadb:
+#   db:
+#     user: etda
+#     name: etda_workfow
+#   enabled: true
+#   image:
+#     tag: 10.3.14
+#   persistence:
+#     storageClass: nfs-client
+#     enabled: true
 
 global:
   vault:

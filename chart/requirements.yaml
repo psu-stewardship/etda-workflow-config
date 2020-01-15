@@ -3,7 +3,7 @@ dependencies:
   version: 0.2.3
   repository: https://harbor.dsrd.libraries.psu.edu/chartrepo/public
   condition: redis.enabled
-- name: mariadb
-  version: 0.0.13
-  repository: https://harbor.dsrd.libraries.psu.edu/chartrepo/public
-  condition: mariadb.enabled
+# - name: mariadb
+#   version: 0.0.13
+#   repository: https://harbor.dsrd.libraries.psu.edu/chartrepo/public
+#   condition: mariadb.enabled

@@ -1,0 +1,36 @@
+{{- if .Values.mysql.enabled -}}
+{{- $fullName := include "chart.fullname" . -}}
+---
+apiVersion: edu.psu.libraries/v1alpha1
+kind: PwGen
+metadata:
+  name: "{{ $fullName }}-mysql"
+spec:
+  secret_items:
+  - key: ROOT_PASSWORD
+  - key: USER
+    value: {{ .Values.mysql.username }}
+  - key: PASSWORD
+  - key: DATABASE
+    value: {{ .Values.mysql.database }}
+---
+apiVersion: mysql.presslabs.org/v1alpha1
+kind: MysqlCluster
+metadata:
+  name: {{ $fullName }}
+spec:
+  podSpec:
+    resources: {}
+  replicas: {{ .Values.mysql.replicas }}
+  secretName: {{ $fullName }}-mysql
+{{- if .Values.mysql.persistence.enabled -}}
+  volumeSpec:
+    persistentVolumeClaim:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: {{ .Values.mysql.persistence.size }}
+      storageClassName: {{ .Values.mysql.persistence.storageClass }}
+{{- end -}}
+{{- end }}
