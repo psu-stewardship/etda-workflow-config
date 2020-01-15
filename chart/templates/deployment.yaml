@@ -160,7 +160,7 @@ spec:
               secretKeyRef:
                 name: "{{ $fullName }}-mysql"
                 key: PASSWORD
-          - name: MYSQL_USERNAME
+          - name: MYSQL_USER
             valueFrom:
               secretKeyRef:
                 name: "{{ $fullName }}-mysql"
