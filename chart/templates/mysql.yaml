@@ -19,11 +19,9 @@ kind: MysqlCluster
 metadata:
   name: {{ $fullName }}
 spec:
-  podSpec:
-    resources: {}
   replicas: {{ .Values.mysql.replicas }}
   secretName: {{ $fullName }}-mysql
-{{- if .Values.mysql.persistence.enabled -}}
+{{- if .Values.mysql.persistence.enabled }}
   volumeSpec:
     persistentVolumeClaim:
       accessModes:
@@ -33,4 +31,4 @@ spec:
           storage: {{ .Values.mysql.persistence.size }}
       storageClassName: {{ .Values.mysql.persistence.storageClass }}
 {{- end -}}
-{{- end }}
+{{- end -}}
