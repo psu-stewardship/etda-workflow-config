@@ -154,7 +154,7 @@ spec:
             value: {{ .Values.partner }}
           - name: RAILS_LOG_TO_STDOUT
             value: "true"
-          {{- if .Values.mariadb.enabled }}
+          {{- if .Values.mysql.enabled }}
           - name: MYSQL_PASSWORD
             valueFrom:
               secretKeyRef:
