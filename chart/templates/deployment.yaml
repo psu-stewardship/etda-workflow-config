@@ -124,52 +124,52 @@ spec:
           image: "{{- if .Values.imageName }}{{ .Values.imageName }}{{- else}}{{ .Values.image.repository }}:{{ .Values.image.tag }}{{- end}}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-          {{- if .Values.global.vault.enabled }}
-          - name: VAULT_PATH
-            value: {{ .Values.global.vault.path }}
-          - name: VAULT_ADDR
-            value: {{ .Values.global.vault.address }}
-          {{- end }}
-          - name: RAILS_ENV
-            value: {{ .Values.rails.environment }}
-          - name: PARTNER
-            value: {{ .Values.partner }}
-          - name: RAILS_LOG_TO_STDOUT
-            value: "true"
-          {{- if .Values.redis.generatePassword }}
-          - name: REDIS_PASSWORD
-            valueFrom: 
-              secretKeyRef:
-                name: "{{ $fullName }}-redis"
-                key: REDIS_PASSWORD
-          {{- end }}
-          {{- if .Values.mysql.enabled }}
-          - name: MYSQL_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: "{{ $fullName }}-mysql"
-                key: PASSWORD
-          - name: MYSQL_USER
-            valueFrom:
-              secretKeyRef:
-                name: "{{ $fullName }}-mysql"
-                key: USER
-          - name: MYSQL_DATABASE
-            valueFrom:
-              secretKeyRef:
-                name: "{{ $fullName }}-mysql"
-                key: DATABASE
-          - name: MYSQL_HOST
-            value: {{ $fullName }}-mysql-master
-          {{- end }}
-          {{- if .Values.redis.enabled }}
-          {{- if .Values.redis.password }}
-          - name: REDIS_PASSWORD
-            value: {{ .Values.redis.password }}
-          {{- end }}
-          - name: REDIS_HOST
-            value: {{ $fullName }}-redis
-          {{- end }}
+            {{- if .Values.global.vault.enabled }}
+            - name: VAULT_PATH
+              value: {{ .Values.global.vault.path }}
+            - name: VAULT_ADDR
+              value: {{ .Values.global.vault.address }}
+            {{- end }}
+            - name: RAILS_ENV
+              value: {{ .Values.rails.environment }}
+            - name: PARTNER
+              value: {{ .Values.partner }}
+            - name: RAILS_LOG_TO_STDOUT
+              value: "true"
+            {{- if .Values.redis.generatePassword }}
+            - name: REDIS_PASSWORD
+              valueFrom: 
+                secretKeyRef:
+                  name: "{{ $fullName }}-redis"
+                  key: REDIS_PASSWORD
+            {{- end }}
+            {{- if .Values.mysql.enabled }}
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ $fullName }}-mysql"
+                  key: PASSWORD
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ $fullName }}-mysql"
+                  key: USER
+            - name: MYSQL_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ $fullName }}-mysql"
+                  key: DATABASE
+            - name: MYSQL_HOST
+              value: {{ $fullName }}-mysql-master
+            {{- end }}
+            {{- if .Values.redis.enabled }}
+            {{- if .Values.redis.password }}
+            - name: REDIS_PASSWORD
+              value: {{ .Values.redis.password }}
+            {{- end }}
+            - name: REDIS_HOST
+              value: {{ $fullName }}-redis
+            {{- end }}
           volumeMounts:
             - name: shared-data
               mountPath: /secrets
