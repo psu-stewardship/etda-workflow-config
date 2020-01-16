@@ -19,7 +19,7 @@ spec:
           vault:
             mountPath: auth/k8s-dsrd-dev
             enabled: true
-  project: default-values:go
+  project: default
   syncPolicy:
     automated:
       prune: false
