@@ -97,12 +97,6 @@ spec:
             - name: tls
               mountPath: /etc/ssl/private/key.key
               subPath: tls.key
-          startupProbe:
-            httpGet:
-              path: /healthcheck/all
-            initialDelaySeconds: 15
-            periodSeconds: 15
-            failureThreshold: 30
           ports:
             - name: http-wa
               containerPort: 80
