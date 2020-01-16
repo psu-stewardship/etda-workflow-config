@@ -87,6 +87,7 @@ certmanager:
     provider: route53
 
 redis:
+  generatePassword: true
   enabled: true
   persistence:
     enabled: true
