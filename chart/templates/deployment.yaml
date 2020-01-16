@@ -124,6 +124,12 @@ spec:
           image: "{{- if .Values.imageName }}{{ .Values.imageName }}{{- else}}{{ .Values.image.repository }}:{{ .Values.image.tag }}{{- end}}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
+          {{- if .Values.global.vault.enabled }}
+          - name: VAULT_PATH
+            value: {{ .Values.global.vault.path }}
+          - name: VAULT_ADDR
+            value: {{ .Values.global.vault.address }}
+          {{- end }}
           - name: RAILS_ENV
             value: {{ .Values.rails.environment }}
           - name: PARTNER
