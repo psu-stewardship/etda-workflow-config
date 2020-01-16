@@ -100,7 +100,7 @@ spec:
           startupProbe:
             httpGet:
               path: /healthcheck/all
-            initalDelaySeconds: 15 
+            initialDelaySeconds: 15
             periodSeconds: 15
             failureThreshold: 30
           ports:
