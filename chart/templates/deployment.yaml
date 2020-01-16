@@ -20,10 +20,8 @@ spec:
         app.kubernetes.io/name: {{ include "chart.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
-      # securityContext:
-      #   capabilities:
-      #     add: ["CAP_SETFCAP"]
-      #   runAsUser: 10000
+      securityContext:
+        fsGroup: 10000
       volumes:
         - name: shared-data
           emptyDir: {}
@@ -83,27 +81,6 @@ spec:
             "agent",
             "-config=/etc/vault/vault-agent-config.hcl",
           ]
-        # - name: consul-template
-        #   image: hashicorp/consul-template:0.20.1-alpine
-        #   imagePullPolicy: Always
-        #   env:
-        #   - name: VAULT_PATH
-        #     value: {{ .Values.global.vault.path }}
-        #   - name: VAULT_ADDR
-        #     value: {{ .Values.global.vault.address }}
-        #   volumeMounts:
-        #   - name: shared-data
-        #     mountPath: /secrets
-        #   - name: vault-token
-        #     mountPath: /home/vault
-        #   - name: vault-config
-        #     mountPath: /etc/consul-template
-        #   args: [
-        #     "-vault-agent-token-file=/home/vault/.vault-token",
-        #     "-vault-addr={{ .Values.global.vault.address }}",
-        #     "-template=/etc/consul-template/env.env:/secrets/env.env",
-        #     "-once"
-        #   ]
       {{- end }}
       containers:
       {{- if .Values.webaccess.enabled }}
@@ -139,7 +116,6 @@ spec:
             limits:
               cpu: 100m
               memory: 2048Mi
-              
             requests:
               cpu: 100m
               memory: 1024Mi
