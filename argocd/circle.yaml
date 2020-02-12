@@ -19,10 +19,10 @@ spec:
           vault:
             mountPath: auth/k8s-dsrd-dev
             enabled: true
+            role: etda-workflow-dev
         vault:
           mountPath: auth/k8s-dsrd-dev
           path: secret/data/app/etda-workflow/dev
-          role: etda-workflow-dev
         image:
           tag: c454c895bb80c55a16485dc8b28147d53317cae8
           repository: harbor.dsrd.libraries.psu.edu/library/etda-workflow
