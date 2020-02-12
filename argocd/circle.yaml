@@ -24,7 +24,7 @@ spec:
           mountPath: auth/k8s-dsrd-dev
           path: secret/data/app/etda-workflow/dev
         image:
-          tag: c454c895bb80c55a16485dc8b28147d53317cae8
+          tag: c08bb520ba80aefee9b4950c35872dab228f9d34
           repository: harbor.dsrd.libraries.psu.edu/library/etda-workflow
         fqdn: etda-workflow-circle.dsrd.libraries.psu.edu
         serviceAccount:
