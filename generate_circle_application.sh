@@ -51,7 +51,7 @@ function initalize_app {
     yq w argocd/$branch_slugified.yaml spec.source.helm.values.fqdn $fqdn -i
     yq w argocd/$branch_slugified.yaml spec.source.helm.values.vault.path $vault_path -i 
     yq w argocd/$branch_slugified.yaml spec.source.helm.values.serviceAccount.name $vault_login_role -i
-    yq w argocd/$branch_slugified.yaml spec.source.helm.values.vault.role $vault_login_role -i
+    yq w argocd/$branch_slugified.yaml spec.source.helm.values.global.vault.role $vault_login_role -i
 }
 
 function update_app {
