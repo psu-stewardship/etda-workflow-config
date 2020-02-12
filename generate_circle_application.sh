@@ -49,7 +49,7 @@ function initalize_app {
     yq w argocd/$branch_slugified.yaml spec.source.helm.values.image.tag $CIRCLE_SHA1 -i
     yq w argocd/$branch_slugified.yaml spec.source.helm.values.image.repository $image_repository -i
     yq w argocd/$branch_slugified.yaml spec.source.helm.values.fqdn $fqdn -i
-    yq w argocd/$branch_slugified.yaml spec.source.helm.values.vault.path $vault_path -i 
+    yq w argocd/$branch_slugified.yaml spec.source.helm.values.global.vault.path $vault_path -i 
     yq w argocd/$branch_slugified.yaml spec.source.helm.values.serviceAccount.name $vault_login_role -i
     yq w argocd/$branch_slugified.yaml spec.source.helm.values.global.vault.role $vault_login_role -i
 }
