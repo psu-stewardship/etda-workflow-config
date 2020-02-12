@@ -21,7 +21,7 @@ if [ ${CIRCLE_BRANCH} == "master" ]; then
     config_env="qa"
     vault_mount_path=auth/k8s-dsrd-dev
     fqdn="etda-workflow-qa.dsrd.libraries.psu.edu"
-    vault_path="secret/data/app/etda-workflow/${config_env}"
+    vault_path="secret/data/app/etda_workflow/${config_env}"
     vault_login_role="etda-workflow-qa"
 else
     app_name="etda-workflow-$branch_slugified"
@@ -29,7 +29,7 @@ else
     config_env="dev"
     vault_mount_path=auth/k8s-dsrd-dev
     fqdn=etda-workflow-$branch_slugified.$domain_name
-    vault_path="secret/data/app/etda-workflow/${config_env}"
+    vault_path="secret/data/app/etda_workflow/${config_env}"
     vault_login_role="etda-workflow-${config_env}"
 fi
 
