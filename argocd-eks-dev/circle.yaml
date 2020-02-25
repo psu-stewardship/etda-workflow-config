@@ -25,7 +25,8 @@ spec:
             storageClass: gp2
         global:
           vault:
-            mountPath: auth/k8s-dsrd-dev
+            address: http://vault.vault:8200
+            mountPath: auth/kubernetes
             enabled: true
             path: secret/data/app/etda_workflow/dev
             role: etda-workflow-dev
