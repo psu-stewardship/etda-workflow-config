@@ -22,7 +22,7 @@ spec:
             path: secret/data/app/etda_workflow/dev
             role: etda-workflow-dev
         image:
-          tag: 1438ed828eb41875e9813212aaade73243db0952
+          tag: 5bffbd4ec1ef8ae2267e71952e5c11f6ef13a2b0
           repository: harbor.dsrd.libraries.psu.edu/library/etda-workflow
         fqdn: etda-workflow-circle.dsrd.libraries.psu.edu
         serviceAccount:
