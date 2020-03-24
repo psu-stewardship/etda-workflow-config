@@ -57,6 +57,8 @@ tolerations: []
 
 affinity: {}
 
+env: development
+
 rails:
   environment: production
 

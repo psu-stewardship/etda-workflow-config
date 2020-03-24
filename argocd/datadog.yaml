@@ -27,6 +27,7 @@ spec:
           tag: 4863c96a9d799dac2fa00a6fe379c5b19a62bfdb
           repository: harbor.dsrd.libraries.psu.edu/library/etda-workflow
         fqdn: etda-workflow-datadog.dsrd.libraries.psu.edu
+        env: datadog
         serviceAccount:
           name: etda-workflow-dev
   project: default

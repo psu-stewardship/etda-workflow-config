@@ -19,6 +19,7 @@ if [ ${CIRCLE_BRANCH} == "master" ]; then
     app_name="etda-workflow-qa"
     dest_namespace="etda-workflow-qa"
     config_env="qa"
+    env="qa"
     vault_mount_path=auth/k8s-dsrd-dev
     fqdn="etda-workflow-qa.dsrd.libraries.psu.edu"
     vault_path="secret/data/app/etda_workflow/${config_env}"
@@ -27,6 +28,7 @@ else
     app_name="etda-workflow-$branch_slugified"
     dest_namespace="etda-workflow-$branch_slugified"
     config_env="dev"
+    env=$branch_slugified
     vault_mount_path=auth/k8s-dsrd-dev
     fqdn=etda-workflow-$branch_slugified.$domain_name
     vault_path="secret/data/app/etda_workflow/${config_env}"
@@ -49,6 +51,7 @@ function initalize_app {
     yq w argocd/$branch_slugified.yaml spec.source.helm.values.image.tag $CIRCLE_SHA1 -i
     yq w argocd/$branch_slugified.yaml spec.source.helm.values.image.repository $image_repository -i
     yq w argocd/$branch_slugified.yaml spec.source.helm.values.fqdn $fqdn -i
+    yq w argocd/$branch_slugified.yaml spec.source.helm.values.env $env -i
     yq w argocd/$branch_slugified.yaml spec.source.helm.values.global.vault.path $vault_path -i 
     yq w argocd/$branch_slugified.yaml spec.source.helm.values.serviceAccount.name $vault_login_role -i
     yq w argocd/$branch_slugified.yaml spec.source.helm.values.global.vault.role $vault_login_role -i
