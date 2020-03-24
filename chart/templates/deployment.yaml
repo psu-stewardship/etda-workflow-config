@@ -124,6 +124,10 @@ spec:
           image: "{{- if .Values.imageName }}{{ .Values.imageName }}{{- else}}{{ .Values.image.repository }}:{{ .Values.image.tag }}{{- end}}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
+            - name: DD_AGENT_HOST
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
             {{- if .Values.global.vault.enabled }}
             - name: VAULT_PATH
               value: {{ .Values.global.vault.path }}
