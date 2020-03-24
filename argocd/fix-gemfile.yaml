@@ -24,7 +24,7 @@ spec:
         vault:
           mountPath: auth/k8s-dsrd-dev
         image:
-          tag: 011258b6fc874ea7d13bdbccfb04cff49246d56a
+          tag: 02435bdc7ea9d8fe9e0850ddaa42f4e31a5843cb
           repository: harbor.dsrd.libraries.psu.edu/library/etda-workflow
         fqdn: etda-workflow-fix-gemfile.dsrd.libraries.psu.edu
         serviceAccount:
