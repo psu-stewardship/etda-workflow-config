@@ -129,6 +129,8 @@ spec:
                 fieldRef:
                   fieldPath: status.hostIP
             {{- if .Values.global.vault.enabled }}
+            - name: RELEASE_NAME
+              value: {{ .Release.Name }}
             - name: VAULT_PATH
               value: {{ .Values.global.vault.path }}
             - name: VAULT_ADDR
