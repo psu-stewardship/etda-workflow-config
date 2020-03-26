@@ -26,7 +26,7 @@ spec:
         image:
           tag: ad465868981f76166f994ba8352892db192d4467
           repository: harbor.dsrd.libraries.psu.edu/library/etda-workflow
-        fqdn: etda-workflow-develop.dsrd.libraries.psu.edu
+        fqdn: etda-workflow-develop.dev.k8s.libraries.psu.edu
         serviceAccount:
           name: etda-workflow-dev
   project: default
