@@ -21,7 +21,7 @@ spec:
       {{ else }}
       port: 80
       {{ end }}
-      weght: 10
+      weight: 10
   tls:
     passthrough: true
 {{- end }}
