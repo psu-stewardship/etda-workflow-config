@@ -15,6 +15,10 @@ spec:
     path: chart
     helm:
      values: |
+        ingressroute:
+          middlewares:
+          - name: psu-ip-whitelist
+            namespace: traefik
         global:
           vault:
             mountPath: auth/k8s-dsrd-dev
