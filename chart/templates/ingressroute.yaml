@@ -1,0 +1,27 @@
+{{- if .Values.ingressroute.enabled }}
+{{- $fullName := include "chart.fullname" . -}}
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: "{{ $fullName }}"
+spec:
+  routes:
+  - kind: Rule
+    match: Host(`{{ .Values.fqdn }}`)
+    {{- if .Values.ingressroute.middlewares }}
+    middlewares:
+    {{- toYaml .Values.ingressroute.middlewares | nindent 4}}
+    {{- end }}
+    services:
+    - TerminationDelay: 400
+      name: {{ $fullName }}
+      {{- if .Values.webaccess.enabled }}
+      port: https
+      {{ else }}
+      port: http
+      {{ end }}
+      weght: 10
+  tls:
+    passthrough: true
+{{- end }}

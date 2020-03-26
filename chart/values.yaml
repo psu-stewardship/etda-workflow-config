@@ -2,6 +2,14 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+
+ingressroute:
+  enabled: false
+  middlewares: []
+  # middlewares:
+  # - name: psu-ip-whitelist
+  #   namespace: traefik
+
 replicaCount: 1
 
 partner: graduate
