@@ -48,9 +48,6 @@ data:
     RequestHeader set X-Forwarded-Proto "https"
 
     <LocationMatch / >
-        CosignProtected On
-        CosignAllowPublicAccess On
-        AuthType Cosign
 
         RequestHeader set REMOTE_REALM "%{REMOTE_REALM}e"
         Header add REMOTE_USER "%{REMOTE_USER}s"
