@@ -17,9 +17,9 @@ spec:
     - TerminationDelay: 400
       name: {{ $fullName }}
       {{- if .Values.webaccess.enabled }}
-      port: https
+      port: 443
       {{ else }}
-      port: http
+      port: 80
       {{ end }}
       weght: 10
   tls:
