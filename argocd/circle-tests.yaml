@@ -15,6 +15,8 @@ spec:
     path: chart
     helm:
      values: |
+        ingressroute:
+          enabled: true
         global:
           vault:
             mountPath: auth/k8s-dsrd-dev
@@ -26,7 +28,7 @@ spec:
         image:
           tag: d48d1ea3028b3e249c54b112ccadda4d544b1399
           repository: harbor.dsrd.libraries.psu.edu/library/etda-workflow
-        fqdn: etda-workflow-circle-tests.dsrd.libraries.psu.edu
+        fqdn: etda-workflow-circle-tests.dev.k8s.libraries.psu.edu
         env: circle-tests
         serviceAccount:
           name: etda-workflow-dev
