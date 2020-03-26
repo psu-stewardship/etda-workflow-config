@@ -49,7 +49,7 @@ data:
 
     <LocationMatch / >
         CosignProtected On
-        CosignAllowPublicAccess On
+        CosignAllowPublicAccess Off
         AuthType Cosign
 
         RequestHeader set REMOTE_REALM "%{REMOTE_REALM}e"
@@ -84,6 +84,12 @@ data:
         Satisfy any
     </Location>
 
+    <LocationMatch / >
+        CosignProtected On
+        CosignAllowPublicAccess Off
+        AuthType Cosign
+        Require valid-user
+    </LocationMatch>
 
     DocumentRoot /var/www/html
 
