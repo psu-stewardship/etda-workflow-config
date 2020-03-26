@@ -4,7 +4,7 @@
 
 
 ingressroute:
-  enabled: false
+  enabled: true
   middlewares: []
   # middlewares:
   # - name: psu-ip-whitelist
@@ -29,7 +29,7 @@ service:
   port: 80
 
 ingress:
-  enabled: true
+  enabled: false
   annotations:
     nginx.ingress.kubernetes.io/proxy-body-size: "10000m" 
     nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
