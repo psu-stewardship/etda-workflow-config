@@ -28,7 +28,7 @@ spec:
         vault:
           mountPath: auth/k8s-dsrd-dev
         mysql:
-          replicas: 1
+          replicas: 2
         image:
           tag: c7c6f2e29072e4a874a0e921871eddc6dd547cfe
           repository: harbor.dsrd.libraries.psu.edu/library/etda-workflow
