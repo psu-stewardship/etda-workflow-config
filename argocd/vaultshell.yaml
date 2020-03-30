@@ -26,7 +26,7 @@ spec:
         image:
           tag: 01d5a203228423ae6b5683f48c724e77b44bce1a
           repository: harbor.dsrd.libraries.psu.edu/library/etda-workflow
-        fqdn: etda-workflow-vaultshell.dsrd.libraries.psu.edu
+        fqdn: etda-workflow-vaultshell.dev.k8s.libraries.psu.edu
         env: vaultshell
         serviceAccount:
           name: etda-workflow-dev
