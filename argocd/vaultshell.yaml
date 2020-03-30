@@ -1,0 +1,37 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+  name: etda-workflow-vaultshell
+  namespace: argocd
+spec:
+  destination:
+    namespace: etda-workflow-vaultshell
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: git@github.com:psu-stewardship/etda-workflow-config.git
+    targetRevision: HEAD
+    path: chart
+    helm:
+     values: |
+        global:
+          vault:
+            mountPath: auth/k8s-dsrd-dev
+            enabled: true
+            path: secret/data/app/etda_workflow/dev
+            role: etda-workflow-dev
+        vault:
+          mountPath: auth/k8s-dsrd-dev
+        image:
+          tag: 01d5a203228423ae6b5683f48c724e77b44bce1a
+          repository: harbor.dsrd.libraries.psu.edu/library/etda-workflow
+        fqdn: etda-workflow-vaultshell.dsrd.libraries.psu.edu
+        env: vaultshell
+        serviceAccount:
+          name: etda-workflow-dev
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
