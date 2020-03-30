@@ -1,7 +1,7 @@
 ## takes environment vars from CI and puts them into an application spec
 
 ## hardcode domain we may want to set this in CI before running, so this is stubbed out here 
-domain_name="dsrd.libraries.psu.edu"
+domain_name="dev.k8s.libraries.psu.edu"
 config_env=${CONFIG_ENV:-dev}
 config_branch=${CONFIG_BRANCH:-master}
 image_repository=${IMAGE_REPOSITORY:-harbor.dsrd.libraries.psu.edu/library/etda-workflow}
