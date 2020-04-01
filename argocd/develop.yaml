@@ -15,6 +15,7 @@ spec:
     path: chart
     helm:
      values: |
+        partner: honors
         global:
           vault:
             mountPath: auth/k8s-dsrd-dev
