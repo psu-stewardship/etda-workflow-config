@@ -24,7 +24,7 @@ spec:
         vault:
           mountPath: auth/k8s-dsrd-dev
         image:
-          tag: 88422b605448f9c04ed98a7591c6cb7a55dcd17a
+          tag: 9241f59b04af9a1ef881e9dac4c15f39269fe049
           repository: harbor.dsrd.libraries.psu.edu/library/etda-workflow
         fqdn: etda-workflow-circle-tests.dev.k8s.libraries.psu.edu
         env: circle-tests
