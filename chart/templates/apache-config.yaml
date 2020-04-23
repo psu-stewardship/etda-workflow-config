@@ -47,15 +47,15 @@ data:
 
     RequestHeader set X-Forwarded-Proto "https"
 
-    # Unset REMOTE_USER. Cosign will set
-    RequestHeader unset REMOTE_USER
-
     <LocationMatch / >
+        CosignProtected On
+        CosignAllowPublicAccess Off
+        AuthType Cosign
 
-        # RequestHeader set REMOTE_REALM "%{REMOTE_REALM}e"
-        # Header add REMOTE_USER "%{REMOTE_USER}s"
-        # RequestHeader set REMOTE_USER "%{REMOTE_USER}s"
-        # RequestHeader set HTTP_REMOTE_USER "%{REMOTE_USER}s"
+        RequestHeader set REMOTE_REALM "%{REMOTE_REALM}e"
+        Header add REMOTE_USER "%{REMOTE_USER}s"
+        RequestHeader set REMOTE_USER "%{REMOTE_USER}s"
+        RequestHeader set HTTP_REMOTE_USER "%{REMOTE_USER}s"
 
         RequestHeader unset X-Forwarded-User
         RequestHeader unset X-Forwarded-Realm
@@ -83,6 +83,13 @@ data:
         Allow from all
         Satisfy any
     </Location>
+
+    <LocationMatch / >
+        CosignProtected On
+        CosignAllowPublicAccess Off
+        AuthType Cosign
+        Require valid-user
+    </LocationMatch>
 
     DocumentRoot /var/www/html
 
