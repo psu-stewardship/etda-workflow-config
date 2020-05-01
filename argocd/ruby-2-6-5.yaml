@@ -24,7 +24,7 @@ spec:
         vault:
           mountPath: auth/k8s-dsrd-dev
         image:
-          tag: 9561b9f8be45b97237551c109169b275c1f41efb
+          tag: 3f96bfa4222f8688b3ef8c6708690994ecb17ded
           repository: harbor.dsrd.libraries.psu.edu/library/etda-workflow
         fqdn: etda-workflow-ruby-2-6-5.dev.k8s.libraries.psu.edu
         env: ruby-2-6-5
