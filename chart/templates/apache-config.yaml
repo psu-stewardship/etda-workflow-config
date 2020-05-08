@@ -16,7 +16,7 @@ data:
     CosignValidationErrorRedirect      https://webaccess.psu.edu/validation_error.html
     CosignFilterHashLength 2
     CosignService {{ .Values.fqdn }}
-    CosignCrypto /etc/ssl/private/key.key /etc/ssl/certs/cert.crt /etc/apache2/cosign-ca/InCommonSHA2Chain.pem
+    CosignCrypto /etc/ssl/private/key.key /etc/ssl/certs/cert.crt /etc/ssl/certs/addtrust-usertrust.pem
 
     LogFormat "{ \
     \"@timestamp\":\"%{%FT%T%z}t\", \
