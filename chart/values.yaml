@@ -16,7 +16,7 @@ partner: graduate
 fqdn: etda-go
 
 image:
-  repository: harbor.dsrd.libraries.psu.edu/library/etda-workflow
+  repository: harbor.k8s.libraries.psu.edu/library/etda-workflow
   tag: 45
   pullPolicy: IfNotPresent
   imagePullSecrets: dsrd-dockerhub
@@ -83,7 +83,7 @@ persistence:
 
 webaccess:
   enabled: true
-  image: harbor.dsrd.libraries.psu.edu/public/apache-docker-webaccess:v3.0.5
+  image: harbor.k8s.libraries.psu.edu/public/apache-docker-webaccess:v3.0.5
 
 certmanager:
   enabled: false
