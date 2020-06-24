@@ -4,7 +4,7 @@
 domain_name="dev.k8s.libraries.psu.edu"
 config_env=${CONFIG_ENV:-dev}
 config_branch=${CONFIG_BRANCH:-master}
-image_repository=${IMAGE_REPOSITORY:-harbor.dsrd.libraries.psu.edu/library/etda-workflow}
+image_repository=${IMAGE_REPOSITORY:-harbor.k8s.libraries.psu.edu/library/etda-workflow}
 
 
 ## configure git 
