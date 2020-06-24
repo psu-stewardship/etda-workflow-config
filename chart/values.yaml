@@ -34,6 +34,7 @@ ingress:
     nginx.ingress.kubernetes.io/proxy-body-size: "10000m" 
     nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
     nginx.ingress.kubernetes.io/ssl-passthrough: 'true'
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
   hosts:
     - host: chart-example.local
       paths: ["/"]
