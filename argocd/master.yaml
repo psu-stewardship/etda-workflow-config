@@ -31,7 +31,7 @@ spec:
           replicas: 2
         image:
           tag: 07f7888438f706bd2d5de601924261b788565057
-          repository: harbor.dsrd.libraries.psu.edu/library/etda-workflow
+          repository: harbor.k8s.libraries.psu.edu/library/etda-workflow
         fqdn: etda-workflow-qa.dev.k8s.libraries.psu.edu
         serviceAccount:
           name: etda-workflow-qa
