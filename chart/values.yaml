@@ -83,7 +83,7 @@ persistence:
 
 webaccess:
   enabled: true
-  image: harbor.k8s.libraries.psu.edu/public/apache-docker-webaccess:v3.0.5
+  image: harbor.k8s.libraries.psu.edu/public/apache-docker-webaccess:v3.0.6
 
 certmanager:
   enabled: false
