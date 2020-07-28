@@ -6,7 +6,7 @@ kind: PwGen
 metadata:
   name: "{{ $fullName }}-mysql"
 spec:
-  secret_items:
+  secretItems:
   - key: ROOT_PASSWORD
   - key: USER
     value: {{ .Values.mysql.username }}
