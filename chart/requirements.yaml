@@ -1,5 +1,5 @@
 dependencies:
 - name: redis
   version: 0.3.3
-  repository: https://harbor.k8s.libraries.psu.edu/chartrepo/public
+  repository: https://harbor.k8s.libraries.psu.edu/chartrepo/library
   condition: redis.enabled
