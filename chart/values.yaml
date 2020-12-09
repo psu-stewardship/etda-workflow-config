@@ -2,13 +2,7 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-
-ingressroute:
-  enabled: false
-  middlewares: []
-  # middlewares:
-  # - name: psu-ip-whitelist
-  #   namespace: traefik
+createNamespace: true
 
 replicaCount: 1
 
@@ -81,8 +75,13 @@ persistence:
     requests:
       storage: 8Gi
 
-webaccess:
+mod_oidc:
   enabled: true
+  image: harbor.k8s.libraries.psu.edu/public/apache-docker-webaccess:v4.0.0
+
+# depricated in favor of mod_oidc
+webaccess:
+  enabled: false
   image: harbor.k8s.libraries.psu.edu/public/apache-docker-webaccess:v3.0.9
 
 certmanager:
