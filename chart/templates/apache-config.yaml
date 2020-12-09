@@ -1,5 +1,5 @@
 {{- $fullName := include "chart.fullname" . -}}
-{{- if .Values.webaccess.enabled }}
+{{- if .Values.mod_oidc.enabled }}
 ---
 apiVersion: v1
 data:
