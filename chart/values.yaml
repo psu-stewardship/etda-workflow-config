@@ -76,7 +76,7 @@ persistence:
       storage: 8Gi
 
 mod_oidc:
-  enabled: false
+  enabled: true
   image: harbor.k8s.libraries.psu.edu/public/apache-docker-webaccess:v4.0.1
 
 # depricated in favor of mod_oidc
