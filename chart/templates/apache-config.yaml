@@ -6,18 +6,6 @@ data:
  vhost.conf: |-
     <VirtualHost _default_:443>
 
-    ServerAdmin webmaster@localhost
-    CosignProtected Off
-    CosignHostname connect.webaccess.psu.edu
-    CosignPort	6664
-    CosignRedirect https://webaccess.psu.edu/
-    CosignPostErrorRedirect https://webaccess.psu.edu/post_error.html
-    CosignValidReference              ^https?:\/\/.*\.psu\.edu(\/.*)?
-    CosignValidationErrorRedirect      https://webaccess.psu.edu/validation_error.html
-    CosignFilterHashLength 2
-    CosignService {{ .Values.fqdn }}
-    CosignCrypto /etc/ssl/private/key.key /etc/ssl/certs/cert.crt /etc/ssl/certs/addtrust-usertrust.pem
-
     LogFormat "{ \
     \"@timestamp\":\"%{%FT%T%z}t\", \
     \"client_ip\":\"%a\", \
@@ -48,48 +36,28 @@ data:
     RequestHeader set X-Forwarded-Proto "https"
 
     <LocationMatch / >
-        CosignProtected On
-        CosignAllowPublicAccess Off
-        AuthType Cosign
+        AuthType openid-connect
+        Require all granted
 
-        RequestHeader set REMOTE_REALM "%{REMOTE_REALM}e"
-        Header add REMOTE_USER "%{REMOTE_USER}s"
-        RequestHeader set REMOTE_USER "%{REMOTE_USER}s"
-        RequestHeader set HTTP_REMOTE_USER "%{REMOTE_USER}s"
-
-        RequestHeader unset X-Forwarded-User
-        RequestHeader unset X-Forwarded-Realm
-
-        RequestHeader set X-Forwarded-User "%{REMOTE_USER}s"
-        RequestHeader set X-Forwarded-Realm "%{REMOTE_REALM}e"
+        RequestHeader unset HTTP_REMOTE_USER 
     </LocationMatch>
 
-    ProxyPass       /cosign/valid !
+    ProxyPass       /oidc !
 
     ProxyPreserveHost On
 
     ProxyPass / http://localhost:3000/
     ProxyPassReverse / http://localhost:3000/
 
-    <LocationMatch "/cosign">
-        CosignProtected On
-        CosignAllowPublicAccess Off
-        AuthType Cosign
-    </LocationMatch>
-
-    <Location /cosign/valid>
-        SetHandler	cosign
-        CosignProtected     Off
-        Allow from all
-        Satisfy any
-    </Location>
-
-    <LocationMatch / >
-        CosignProtected On
-        CosignAllowPublicAccess Off
-        AuthType Cosign
+    <LocationMatch "/login">
+        AuthType openid-connect
         Require valid-user
     </LocationMatch>
+
+    <Location /oidc>
+        AuthType openid-connect
+        Require valid-user
+    </Location>
 
     DocumentRoot /var/www/html
 
