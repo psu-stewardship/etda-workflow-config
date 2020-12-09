@@ -6,7 +6,6 @@ data:
  vhost.conf: |-
     <VirtualHost _default_:443>
 
-    ServerName {{ .Values.fqdn }}
 
     LogFormat "{ \
     \"@timestamp\":\"%{%FT%T%z}t\", \
