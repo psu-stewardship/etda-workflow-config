@@ -40,7 +40,7 @@ spec:
               path: env.env
             - key: vault-agent-config.hcl
               path: vault-agent-config.hcl
-        {{- if .Values.mod_oidc.enabled }}
+        {{- if .Values.webaccess.enabled }}
         - name: webaccess-config
           configMap:
             name: {{ $fullName }}-webaccess
@@ -70,9 +70,9 @@ spec:
       serviceAccountName: {{ .Values.global.vault.role }}
       {{- end }}
       containers:
-      {{- if .Values.mod_oidc.enabled }}
+      {{- if .Values.webaccess.enabled }}
         - name: {{ .Chart.Name }}-webaccess
-          image: {{ .Values.mod_oidc.image }}
+          image: {{ .Values.webaccess.image }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           volumeMounts:
             - name: webaccess-config

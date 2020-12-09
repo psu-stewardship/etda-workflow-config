@@ -10,7 +10,7 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
-      {{- if .Values.mod_oidc.enabled }}
+      {{- if .Values.webaccess.enabled }}
     - port: 443
       targetPort: https-wa
       protocol: TCP
