@@ -52,6 +52,8 @@ data:
     <LocationMatch "/login">
         AuthType openid-connect
         Require valid-user
+
+        RequestHeader set REMOTE_USER %{REMOTE_USER}s
     </LocationMatch>
 
     <Location /oidc>
