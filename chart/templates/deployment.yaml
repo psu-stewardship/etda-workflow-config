@@ -40,7 +40,7 @@ spec:
               path: env.env
             - key: vault-agent-config.hcl
               path: vault-agent-config.hcl
-        {{- if .Values.webaccess.enabled }}
+        {{- if .Values.mod_oidc.enabled }}
         - name: webaccess-config
           configMap:
             name: {{ $fullName }}-webaccess
