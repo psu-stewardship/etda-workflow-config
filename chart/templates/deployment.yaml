@@ -27,19 +27,6 @@ spec:
       securityContext:
         fsGroup: 10000
       volumes:
-        - name: shared-data
-          emptyDir: {}
-        - name: vault-token
-          emptyDir:
-            medium: Memory
-        - name: vault-config
-          configMap:
-            name: {{ $fullName }}-vault
-            items:
-            - key: env.env
-              path: env.env
-            - key: vault-agent-config.hcl
-              path: vault-agent-config.hcl
         {{- if .Values.webaccess.enabled }}
         - name: webaccess-config
           configMap:

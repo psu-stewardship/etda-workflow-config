@@ -13,7 +13,6 @@ image:
   repository: harbor.k8s.libraries.psu.edu/library/etda-workflow
   tag: 45
   pullPolicy: IfNotPresent
-  imagePullSecrets: dsrd-dockerhub
 
 nameOverride: ""
 fullnameOverride: ""
@@ -80,9 +79,9 @@ webaccess:
   image: harbor.k8s.libraries.psu.edu/public/apache-docker-webaccess:v4.0.1
 
 certmanager:
-  enabled: false
+  enabled: true
   issuer:
-    name: letsencrypt-prod-route53
+    name: sectigo
     kind: ClusterIssuer
   # secretName: ""
   # commonName: ""

@@ -1,3 +1,4 @@
+{{- if .Values.certmanager.enabled }}
 ---
 apiVersion: cert-manager.io/v1alpha2
 kind: Certificate
@@ -7,6 +8,7 @@ spec:
   dnsNames:
   - {{ .Values.fqdn }}
   issuerRef:
-    kind: ClusterIssuer
-    name: letsencrypt-prod-route53
+    kind: {{ .Values.certmanager.issuer.kind }}
+    name: {{ .Values.certmanager.issuer.name }}
   secretName: {{ .Values.fqdn }}
+{{- end }}
