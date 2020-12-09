@@ -16,6 +16,10 @@ spec:
       app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
+      annotations:
+        {{- if .Values.global.vault.enabled }}
+        {{- include "vault.annotations" . | nindent 8 }}
+        {{- end }}
       labels:
         app.kubernetes.io/name: {{ include "chart.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
@@ -65,27 +69,10 @@ spec:
       {{- if .Values.global.vault.enabled }}
       serviceAccountName: {{ .Values.global.vault.role }}
       {{- end }}
-      {{- if .Values.global.vault.enabled }}
-      initContainers:
-        - name: vault-agent-auth
-          image: vault
-          volumeMounts:
-          - name: vault-config
-            mountPath: /etc/vault
-          - name: vault-token
-            mountPath: /home/vault
-          env:
-          - name: VAULT_ADDR
-            value: {{ .Values.global.vault.address }}
-          args: [
-            "agent",
-            "-config=/etc/vault/vault-agent-config.hcl",
-          ]
-      {{- end }}
       containers:
-      {{- if .Values.webaccess.enabled }}
+      {{- if .Values.mod_oidc.enabled }}
         - name: {{ .Chart.Name }}-webaccess
-          image: {{ .Values.webaccess.image }}
+          image: {{ .Values.mod_oidc.image }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           volumeMounts:
             - name: webaccess-config
