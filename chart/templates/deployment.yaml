@@ -146,10 +146,6 @@ spec:
               value: {{ $fullName }}-redis
             {{- end }}
           volumeMounts:
-            - name: shared-data
-              mountPath: /secrets
-            - name: vault-token
-              mountPath: /vault
             - name: etda-workflow-data
               mountPath: /etda_workflow/workflow_data_files
             - name: etda-explore-data
