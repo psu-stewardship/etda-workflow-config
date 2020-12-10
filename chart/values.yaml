@@ -91,16 +91,18 @@ certmanager:
     provider: route53
 
 redis:
-  generatePassword: true
   enabled: true
+  image: redis:6.0.9
+  resources:
+    limits:
+      memory: 16Mi
+    requests:
+      cpu: 100m
+      memory: 8Mi
   persistence:
     enabled: true
+    storageSize: 8Gi
     storageClass: nfs-client
-  master:
-    persistence:
-      enabled: false
-  cluster:
-    enabled: false
 
 mysql:
   enabled: true
@@ -121,6 +123,11 @@ mysql:
 #   persistence:
 #     storageClass: nfs-client
 #     enabled: true
+
+serviceAccount:
+  create: true
+  # name: 
+  
 
 global:
   vault:

@@ -118,13 +118,6 @@ spec:
               value: {{ .Values.partner }}
             - name: RAILS_LOG_TO_STDOUT
               value: "true"
-            {{- if .Values.redis.generatePassword }}
-            - name: REDIS_PASSWORD
-              valueFrom: 
-                secretKeyRef:
-                  name: "{{ $fullName }}-redis"
-                  key: REDIS_PASSWORD
-            {{- end }}
             {{- if .Values.mysql.enabled }}
             - name: MYSQL_PASSWORD
               valueFrom:
