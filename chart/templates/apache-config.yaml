@@ -39,8 +39,7 @@ data:
         AuthType openid-connect
         Require valid-user
         OIDCUnAuthAction pass
-
-        RequestHeader unset HTTP_REMOTE_USER 
+        
     </LocationMatch>
 
     ProxyPass       /oidc !
