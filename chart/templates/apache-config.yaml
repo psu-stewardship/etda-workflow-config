@@ -37,7 +37,8 @@ data:
 
     <LocationMatch / >
         AuthType openid-connect
-        Require all granted
+        Require valid-user
+        OIDCUnAuthAction pass
 
         RequestHeader unset HTTP_REMOTE_USER 
     </LocationMatch>
@@ -52,6 +53,7 @@ data:
     <LocationMatch "/login">
         AuthType openid-connect
         Require valid-user
+        OIDCUnAuthAction auth
 
         RequestHeader set REMOTE_USER %{REMOTE_USER}s
     </LocationMatch>
