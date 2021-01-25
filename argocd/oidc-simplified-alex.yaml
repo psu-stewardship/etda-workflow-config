@@ -24,7 +24,7 @@ spec:
         vault:
           mountPath: auth/k8s-dsrd-dev
         image:
-          tag: 707913706bf8b903aaff79c56e247b4f2a00610f
+          tag: 691bdb6c85b60b5894857ce4c7c85d7b6d9817d3
           repository: harbor.k8s.libraries.psu.edu/library/etda-workflow
         fqdn: etda-workflow-oidc-simplified-alex.dev.k8s.libraries.psu.edu
         env: oidc-simplified-alex
