@@ -19,6 +19,9 @@ kind: MysqlCluster
 metadata:
   name: {{ $fullName }}
 spec:
+  podSpec:
+    affinity:
+      podAntiAffinity: {}
   replicas: {{ .Values.mysql.replicas }}
   secretName: {{ $fullName }}-mysql
 {{- if .Values.mysql.persistence.enabled }}
