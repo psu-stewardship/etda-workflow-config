@@ -30,7 +30,7 @@ spec:
         mysql:
           replicas: 1
         image:
-          tag: 2d96784c2ac8b82b8d9a994b4b3ca318acd5d7f8
+          tag: bdb83c8623d80433252a0c5004bbd095953e68d1
           repository: harbor.k8s.libraries.psu.edu/library/etda-workflow
         fqdn: etda-workflow-qa.dev.k8s.libraries.psu.edu
         serviceAccount:
