@@ -1,0 +1,6 @@
+dependencies:
+- name: redis
+  repository: https://harbor.k8s.libraries.psu.edu/chartrepo/library
+  version: 0.3.3
+digest: sha256:169d2d9e1135c607e5dc3feafaec8730a6e29998ecceec9c01e10d9b71af1784
+generated: "2021-06-25T08:51:38.917593-04:00"
